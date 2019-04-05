@@ -5,7 +5,13 @@ molssi_devops_uf
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/molssi_devops_uf/branch/master)
 [![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/molssi_devops_uf/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/molssi_devops_uf/branch/master)
 
-Some molssi stuff
+A sample repository for the MolSSI Workshop at UF.
+
+This repository is currently under development.
+
+To do a developmental install,type
+
+'pip install -e .'
 
 ### Copyright
 
