@@ -11,24 +11,28 @@ def mean(num_list):
 
     Parameters
     -----------
-
-
-
-
-
     num_list : list
         The list to take the average of
     Returns
     ----------
-    mean_list : float 
+    mean_list : float
         The mean of the list
     '''
-    mean = 0.
+    if not isinstance(num_list, list):
+        raise TypeError("Input should be a list.")
+    #looks like it is a good idea to check for empty lists by checking
+    #if they are false (if they are empty then they are false)
+    if not num_list:
+        raise ValueError("List of numbers should be non-empty.")
+    meanv = 0.
     tot_n = len(num_list)
-    for j in range(tot_n):
-        mean += num_list[j]
-    mean /= tot_n
-    return mean
+    try:
+        for j in range(tot_n):
+            meanv += num_list[j]
+    except TypeError:
+        raise TypeError("Cannot calculate mean of list - all list elements must be numbers")
+    meanv /= tot_n
+    return meanv
 
 def canvas(with_attribution=True):
     """
