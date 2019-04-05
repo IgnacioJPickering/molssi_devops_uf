@@ -11,6 +11,11 @@ def mean(num_list):
 
     Parameters
     -----------
+
+
+
+
+
     num_list : list
         The list to take the average of
     Returns
