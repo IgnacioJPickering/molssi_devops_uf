@@ -2,7 +2,7 @@
 This is the start of testing.txt
 ***********************
 xx
-xx
+aaxx
 I added this file from a new clone 
 Now I've added a new line.
 
