@@ -1,0 +1,156 @@
+depending on development you may need different versions of 
+different software so you can install specific versions of software/packages/stuff that you need
+folder w/ dev/ stuff like that
+gh in ck means get a template from github
+stuff in brackets is default value
+we are going to use the same repo and proj name
+this creates project on local computer
+conda supports only python environments
+you can actually have environments with different lammps stuff for instance
+basically every language
+specify the install binary inside the env
+if you don't put a real email address it fails
+this automatically makes a repository for us
+our stuff willl be in devtools
+tests directory, data directory if you have any data
+10 directories and 25 files
+local install uses the setup.py to install the project locally
+sys.path is where python looks for the inports
+pip install -e . 
+-e is editable
+pip install directly 
+this should add a new directory to the installed packages at sys.path
+you can then import it and call the canvas function directly!
+python looks for the packages somewhere
+and with -e it is a developmental instal so it puts it into the site packages
+if you do conda list you can see your package there!
+if you do conda deactivate you don't have it
+now we want to start developing on the package
+version control makes many things much easier
+.git 
+.github
+git log gives you a history of the project
+.gitignore 
+are the good git repository folders
+to do a developmental install do 'pip install -e .'
+adam tells you which lines you added after a commit
+git gives you a very helpful instruction on what to do
+if you do git status
+git add adds the file to the "added files"
+then you commit and adds a commit message
+descriptive commit message written in present
+cookiecutter just initializes the repository for you
+it basically does the git init for you
+push => put info into remote
+pull => take info from remote
+pull = merge?
+pull directly merges stuff
+otherwise you can do fetch + then merge
+HEAD is where we currently are
+and HEAD diff gives you difference between previous commit and this one
+HEAD is the most recent commit
+HEAD~1 is one commit previous to the one we are now
+alternative you can use the commit hashes
+if we just want to revert then git checheckout
+(HEAD with the most recent and alternatively the most recent one)
+you can checkout a particular file
+you can revert to a previous point and go to checkout to a thing very far away, look at some stuff and then go back
+that is called "detached head"
+it means you are no longer at the head but at the middle of the thing
+gitignore: junk files, crap you don't really need
+emacs for instance creates crap files with a ~ sign
+sample file testing.txt~
+we don't want to track testing.txt~
+we really want to add stuff but you don't want testing.txt~
+gives you gitignore for python => stuff that you want to ignore for python for instance
+
+Now lets talk about merge conflicts
+lets say you edit a file and someone else edits the same file
+now it will try to merge when push it 
+but it won't be able to do it
+but push is rejected, the remote has work you don't have locally
+first you want to integrate those changes
+if you like to pull stuff it says automatic merge failed!
+if it can't merge it you need to do that
+it doesn't know which version you want so it has a conflict
+it tells you what to do
+you have conflicts in git status
+in a normal test editor 
+
+<<<<<< HEAD, where most recent commit happens
+stuff
+======
+other stuffk
+>>>>>> commit number
+you make it look like what you want
+it highlights both and you can use theirs, me ond have more  options
+
+now we want to solve the merge conflict
+in general this is what you want to do
+in general do a pull everytime you start working in a directory
+there may be a reason to do just git fetch to update other branches on the remote or some things like that (?) janash only uses git pull
+may be fine to forget about the other stuff
+you can separate different changes into different commits 
+you can separate file modification and staging from commiting
+git holds most stuff in HDD, not in memory
+docstrings are very important and you should write them. numpy style docstrings are cool
+help function in python gives you the docstrings of your functions and of your module
+you want to explain what the function does in the docstring, not how it does it
+__init__.py special file that python looks at
+this file has some imports you are concerned about the second part.
+they advise to use snake case hello_how_are_you
+for functions and variables they advise snake_case and not CamelCase
+there are lots of guidelines on styles
+PEP = python enhancement proposal
+changes are made through that
+PEP 8 defines conventions and style
+good to make sure that code adheres to that
+some tools automatically format code to PEP 8, good idea to use that
+one tool is yapf, in github, yapf "yet another python formatter"
+it doesn't change variable names
+you can add people as collaborators to github projects
+you add people that way
+you may do a fork and do a pull request afterwards
+we may do that later
+nice to have
+
+Perhaps your function gives you something you dont want and worse even, it doesn't give you an error! so you want to check input to see that it is what you want
+
+To check type you usually do something like 
+if not isinstance(something,typeyouwant):
+    raise TypeError("some crap you say because you messed up")
+you are raising your own error
+All error types have formal meanings, you should do that
+push often and pull often if you have collaborators!
+checking for empty lists with len(list) means that python has to find the size of the list but if you check to see it is false it doesn't need to, so it is more efficient
+    you can also check if the list is [] to see if it is an empty list, this is probably also correct
+    maybe some of the items are not floats!
+    that can also go wrong
+    that is going to raise an error anyway but you can give a more descriptive message
+    another way to raise exceptions would be with 
+    "try something, except if a TypeError happens, if it happens raise it and print some custom message instead of the usual TypeError message"
+This gets really unmanagable every time so you can write tests (unit tests)
+pytest is veery cool!
+testing is very important to see that what you do is correct
+test driven development: write test first! you can sometimes use that approach, some people use it 
+pytest looks for folders called tests and files that start with test
+then it looks for fns that begin with test and executes them
+you just execute tests and if stuff is successful it tells you that the tests passed! -v gives you some more info
+asserts are expressions that, if they are true, OK, if they are false they throw an error (assertion error)
+chaining stuff together is integration/continuous integration
+unit testing is testing each thing individually
+there are advanced features of pytest that make it cool
+@pytest.mark.parametrize("num_list", "expected_mean")
+and you can loop through a bunch of values (the syntax is confusing)
+it does each test individually and they can fail individually
+pytest parametrize actually redifines a bunch of functions and evaluates them with different stuff
+you can pick specific tests with pytest, look in the docs
+now we will hook up github to travis-CI which will run these tests each time
+cookiecutter makes a .travis.yml file
+it is a file for the travis service
+all you really have to do is to press that so that travis works
+with your repository
+what goes on is more difficult than it appears
+travis is a virtual machine, we just run pytest on it
+it is testing python 3.6 on mac and python 3.7 on mac and also both versions on linux
+
