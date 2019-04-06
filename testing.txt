@@ -1,7 +1,7 @@
 ************************
 This is the start of testing.txt
 ***********************
-
+xx
 
 I added this file from a new clone 
 Now I've added a new line.
